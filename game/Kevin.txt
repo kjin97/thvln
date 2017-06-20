@@ -1,1 +1,8 @@
-You are Percival.
+You are Maelegant. You are on the Evil team. 
+
+Sol is a fellow member of the evil council.
+
+Ability: Reversal 
+You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. 
+ 
+Note: In games with at least 7 players, a Reversal played on the 4th mission results in a failed mission if there is only one Fail card, and otherwise succeeds. Reversal does not interfere with Agravaine's ability to cause the mission to fail.
