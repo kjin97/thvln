@@ -29,13 +29,8 @@ def main():
 	second_mission_starter = three_players[2]
 
 	# assign the roles in the game
-	good_roles = ["Merlin", "Percival", "Tristan", "Iseult"]
-	evil_roles = ["Mordred", "Morgana"]
-
-	if random.randint(0, 1):
-		good_roles.append("Lancelot [good]")
-	else:
-		evil_roles.append("Lancelot [evil]")
+	good_roles = ["Merlin", "Percival", "Tristan", "Iseult", "Lancelot"]
+	evil_roles = ["Mordred", "Morgana", "Maelegant"]
 
 
 	if num_players >= 7:
@@ -59,7 +54,7 @@ def main():
 		num_good = 6
 	elif num_players == 9:
 		num_evil  = 3
-		num_good = 4
+		num_good = 6
 	elif num_players == 7 or num_players == 8:
 		num_evil = 3
 		num_good = num_players - num_evil
@@ -73,14 +68,14 @@ def main():
 	good_roles_in_game = set()
 	evil_roles_in_game = set()
 
-	if num_players == 9:
-		pelinor = players[8]
-		assignments[pelinor] = "Pelinor"
-		reverse_assignments["Pelinor"] = pelinor
+	# if num_players == 9:
+	# 	pelinor = players[8]
+	# 	assignments[pelinor] = "Pelinor"
+	# 	reverse_assignments["Pelinor"] = pelinor
 
-		questing_beast = players[7]
-		assignments[questing_beast] = "Questing Beast"
-		reverse_assignments["Questing Beast"] = questing_beast
+	# 	questing_beast = players[7]
+	# 	assignments[questing_beast] = "Questing Beast"
+	# 	reverse_assignments["Questing Beast"] = questing_beast
 
 	good_players = players[:num_good]
 	evil_players = players[num_good:num_good + num_evil]
@@ -114,13 +109,13 @@ def main():
 		for evil_player in evil_players:
 			if assignments[evil_player] != "Mordred":
 				seen.append(evil_player)
-		if "Lancelot [good]" in good_roles_in_game:
-			seen.append(reverse_assignments["Lancelot [good]"])
+		if "Lancelot" in good_roles_in_game:
+			seen.append(reverse_assignments["Lancelot"])
 		random.shuffle(seen)
 
 		# and write this info to Merlin's file
 		player_name = reverse_assignments["Merlin"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Merlin.\n")
 			for seen_player in seen:
@@ -138,7 +133,7 @@ def main():
 
 		# and write this info to Percival's file
 		player_name = reverse_assignments["Percival"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Percival.\n")
 			for seen_player in seen:
@@ -147,7 +142,7 @@ def main():
 	if "Tristan" in good_roles_in_game:
 		# write the info to Tristan's file
 		player_name = reverse_assignments["Tristan"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Tristan.\n")
 			# write Iseult's info to file
@@ -160,7 +155,7 @@ def main():
 	if "Iseult" in good_roles_in_game:
 		# write this info to Iseult's file
 		player_name = reverse_assignments["Iseult"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Iseult.\n")
 			# write Tristan's info to file
@@ -170,10 +165,10 @@ def main():
 			else: 
 				file.write("Nobody loves you.\n")
 
-	if "Lancelot [good]" in good_roles_in_game: 
+	if "Lancelot" in good_roles_in_game: 
 		# write ability to Lancelot's file 
-		player_name = reverse_assignments["Lancelot [good]"] 
-		filename = "game/" + player_name 
+		player_name = reverse_assignments["Lancelot"] 
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Lancelot. You are on the Good team. \n\n") 
 			file.write("Ability: Reversal \n")	
@@ -185,8 +180,10 @@ def main():
 		seen = []
 		if "Arthur" in good_roles_in_game:
 			seen.append(reverse_assignments["Arthur"])
-		if "Lancelot [evil]" in evil_roles_in_game:
-			seen.append(reverse_assignments["Lancelot [evil]"])
+		if "Lancelot" in good_roles_in_game:
+			seen.append(reverse_assignments["Lancelot"])
+		if "Maelegant" in evil_roles_in_game:
+			seen.append(reverse_assignments["Maelegant"])
 		random.shuffle(seen)
 
 		# and write this info to Guinevere's file
@@ -195,7 +192,7 @@ def main():
 		with open(filename, "w") as file:
 			file.write("You are Guinevere.\n")
 			for seen_player in seen:
-				file.write("You see " + seen_player + " as either your luscious Lancelot ([evil]) or your lawfully wedded Arthur.\n")
+				file.write("You see " + seen_player + " as either Lancelot, Maelegant, or Arthur.\n")
 
 	if "Arthur" in good_roles_in_game:
 		# determine which roles Arthur sees
@@ -250,7 +247,7 @@ def main():
 
 	if "Mordred" in evil_roles_in_game:
 		player_name = reverse_assignments["Mordred"]
-		filename = "game/" + player_name  + ".txt"
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Mordred. (Join us, we have jackets and meet on Thursdays. ~ Andrew and Kath)\n")
 			for evil_player in evil_players:
@@ -259,7 +256,7 @@ def main():
 
 	if "Morgana" in evil_roles_in_game:
 		player_name = reverse_assignments["Morgana"]
-		filename = "game/" + player_name  + ".txt"
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Morgana.\n")
 			for evil_player in evil_players:
@@ -278,7 +275,7 @@ def main():
 
 	if "Agravaine" in evil_roles_in_game:
 		player_name = reverse_assignments["Agravaine"]
-		filename = "game/" + player_name  + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Agravaine.\n")
 			for evil_player in evil_players:
@@ -287,12 +284,12 @@ def main():
 			file.write("\nAbility: On any mission you are on, after the mission cards have been revealed, should the mission not result in a Fail (such as via a Reversal, requiring 2 fails, or other mechanics), you may formally declare as Agravaine to force the mission to Fail anyway.\n\n");
 			file.write("Drawback: You may only play Fail cards while on missions.\n");
 
-	if "Lancelot [evil]" in evil_roles_in_game: 
+	if "Maelegant" in evil_roles_in_game: 
 		# write ability to Lancelot's file 
-		player_name = reverse_assignments["Lancelot [evil]"] 
-		filename = "game/" + player_name  + ".txt"
+		player_name = reverse_assignments["Maelegant"] 
+		filename = "game/" + player_name + ".txt"
 		with open(filename, "w") as file:
-			file.write("You are Lancelot. You are on the Evil team. \n\n") 
+			file.write("You are Maelegant. You are on the Evil team. \n\n") 
 			for evil_player in evil_players:
 				if evil_player != player_name:
 					file.write(evil_player + " is a fellow member of the evil council.\n")
@@ -312,24 +309,24 @@ def main():
 				file.write(reverse_assignments["Oberon"] + " is Oberon.\n")
 
 	# TODO: pelinor + questing beast
-	if num_players == 9:
-		# write pelinor's information
-		pelinor_filename = "game/" + pelinor
-		with open(pelinor_filename, "w") as file:
-			file.write("You are Pelinor.\n\n")
-			file.write("You must fulfill two of the following conditions to win:\n")
-			file.write("[1]: If Good wins via three mission success.\n")
-			file.write("[2]: If you go on the last mission with the Questing Beast.\n")
-			file.write("[3]: If, after the Assassination Round, you can guess the Questing Beast.\n")
+	# if num_players == 9:
+	# 	# write pelinor's information
+	# 	pelinor_filename = "game/" + pelinor
+	# 	with open(pelinor_filename, "w") as file:
+	# 		file.write("You are Pelinor.\n\n")
+	# 		file.write("You must fulfill two of the following conditions to win:\n")
+	# 		file.write("[1]: If Good wins via three mission success.\n")
+	# 		file.write("[2]: If you go on the last mission with the Questing Beast.\n")
+	# 		file.write("[3]: If, after the Assassination Round, you can guess the Questing Beast.\n")
 
-		questing_beast_filename = "game/" + questing_beast
-		with open(questing_beast_filename, "w") as file:
-			file.write("You are the Questing Beast.\n")
-			file.write("You must play the 'Questing Beast was here' card on missions.\n\n")
-			file.write("You must fulfill exactly one (not both) of the following conditions to win:\n")
-			file.write("[1]: If Evil wins via three missions failing.\n")
-			file.write("[2]: You never go on a mission with Pelinor.\n\n")
-			file.write(pelinor + " is Pelinor.\n")
+	# 	questing_beast_filename = "game/" + questing_beast
+	# 	with open(questing_beast_filename, "w") as file:
+	# 		file.write("You are the Questing Beast.\n")
+	# 		file.write("You must play the 'Questing Beast was here' card on missions.\n\n")
+	# 		file.write("You must fulfill exactly one (not both) of the following conditions to win:\n")
+	# 		file.write("[1]: If Evil wins via three missions failing.\n")
+	# 		file.write("[2]: You never go on a mission with Pelinor.\n\n")
+	# 		file.write(pelinor + " is Pelinor.\n")
 
 
 	# write start file

@@ -29,8 +29,13 @@ def main():
 	second_mission_starter = three_players[2]
 
 	# assign the roles in the game
-	good_roles = ["Merlin", "Percival", "Tristan", "Iseult", "Lancelot"]
-	evil_roles = ["Mordred", "Morgana", "Maelegant"]
+	good_roles = ["Merlin", "Percival", "Tristan", "Iseult"]
+	evil_roles = ["Mordred", "Morgana"]
+
+	if random.randint(0, 1):
+		good_roles.append("Lancelot [good]")
+	else:
+		evil_roles.append("Lancelot [evil]")
 
 
 	if num_players >= 7:
@@ -165,9 +170,9 @@ def main():
 			else: 
 				file.write("Nobody loves you.\n")
 
-	if "Lancelot" in good_roles_in_game: 
+	if "Lancelot [good]" in good_roles_in_game: 
 		# write ability to Lancelot's file 
-		player_name = reverse_assignments["Lancelot"] 
+		player_name = reverse_assignments["Lancelot [good]"] 
 		filename = "game/" + player_name 
 		with open(filename, "w") as file:
 			file.write("You are Lancelot. You are on the Good team. \n\n") 
@@ -245,7 +250,7 @@ def main():
 
 	if "Mordred" in evil_roles_in_game:
 		player_name = reverse_assignments["Mordred"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name  + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Mordred. (Join us, we have jackets and meet on Thursdays. ~ Andrew and Kath)\n")
 			for evil_player in evil_players:
@@ -254,7 +259,7 @@ def main():
 
 	if "Morgana" in evil_roles_in_game:
 		player_name = reverse_assignments["Morgana"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name  + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Morgana.\n")
 			for evil_player in evil_players:
@@ -273,7 +278,7 @@ def main():
 
 	if "Agravaine" in evil_roles_in_game:
 		player_name = reverse_assignments["Agravaine"]
-		filename = "game/" + player_name
+		filename = "game/" + player_name  + ".txt"
 		with open(filename, "w") as file:
 			file.write("You are Agravaine.\n")
 			for evil_player in evil_players:
@@ -282,12 +287,12 @@ def main():
 			file.write("\nAbility: On any mission you are on, after the mission cards have been revealed, should the mission not result in a Fail (such as via a Reversal, requiring 2 fails, or other mechanics), you may formally declare as Agravaine to force the mission to Fail anyway.\n\n");
 			file.write("Drawback: You may only play Fail cards while on missions.\n");
 
-	if "Maelegant" in evil_roles_in_game: 
+	if "Lancelot [evil]" in evil_roles_in_game: 
 		# write ability to Lancelot's file 
-		player_name = reverse_assignments["Maelegant"] 
-		filename = "game/" + player_name 
+		player_name = reverse_assignments["Lancelot [evil]"] 
+		filename = "game/" + player_name  + ".txt"
 		with open(filename, "w") as file:
-			file.write("You are Maelegant. You are on the Evil team. \n\n") 
+			file.write("You are Lancelot. You are on the Evil team. \n\n") 
 			for evil_player in evil_players:
 				if evil_player != player_name:
 					file.write(evil_player + " is a fellow member of the evil council.\n")

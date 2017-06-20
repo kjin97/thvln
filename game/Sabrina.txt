@@ -1,6 +1,6 @@
 You are Maelegant. You are on the Evil team. 
 
-Sol is a fellow member of the evil council.
+kevin is a fellow member of the evil council.
 
 Ability: Reversal 
 You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. 
