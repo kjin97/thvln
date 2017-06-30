@@ -115,7 +115,7 @@ def main():
 
 		# and write this info to Merlin's file
 		player_name = reverse_assignments["Merlin"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Merlin.\n")
 			for seen_player in seen:
@@ -133,7 +133,7 @@ def main():
 
 		# and write this info to Percival's file
 		player_name = reverse_assignments["Percival"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Percival.\n")
 			for seen_player in seen:
@@ -142,7 +142,7 @@ def main():
 	if "Tristan" in good_roles_in_game:
 		# write the info to Tristan's file
 		player_name = reverse_assignments["Tristan"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Tristan.\n")
 			# write Iseult's info to file
@@ -155,7 +155,7 @@ def main():
 	if "Iseult" in good_roles_in_game:
 		# write this info to Iseult's file
 		player_name = reverse_assignments["Iseult"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Iseult.\n")
 			# write Tristan's info to file
@@ -168,7 +168,7 @@ def main():
 	if "Lancelot" in good_roles_in_game: 
 		# write ability to Lancelot's file 
 		player_name = reverse_assignments["Lancelot"] 
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Lancelot. You are on the Good team. \n\n") 
 			file.write("Ability: Reversal \n")	
@@ -247,7 +247,7 @@ def main():
 
 	if "Mordred" in evil_roles_in_game:
 		player_name = reverse_assignments["Mordred"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Mordred. (Join us, we have jackets and meet on Thursdays. ~ Andrew and Kath)\n")
 			for evil_player in evil_players:
@@ -256,7 +256,7 @@ def main():
 
 	if "Morgana" in evil_roles_in_game:
 		player_name = reverse_assignments["Morgana"]
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Morgana.\n")
 			for evil_player in evil_players:
@@ -287,7 +287,7 @@ def main():
 	if "Maelegant" in evil_roles_in_game: 
 		# write ability to Lancelot's file 
 		player_name = reverse_assignments["Maelegant"] 
-		filename = "game/" + player_name + ".txt"
+		filename = "game/" + player_name
 		with open(filename, "w") as file:
 			file.write("You are Maelegant. You are on the Evil team. \n\n") 
 			for evil_player in evil_players:
